@@ -23,7 +23,7 @@ class bodyPart {
         bodyPart();
         bodyPart(string name, int enityHealth, int armorHealth, int armorLVL, int weight);
 
-        bool damage() {}
+        bool damage(Ammo ammo) {}
 
         string getName(){}
         int getEnityHealth(){}
@@ -32,11 +32,12 @@ class bodyPart {
         int getWeight(){}
          
 
-        void setName(string Name){}
+        void setName(string name){}
         void setEnityHealth(int enityHealth){}
         void setArmorHealth(int armorHealth){}
         void setArmorLVL(int armorLVL){}
         void setWeight(int weight){}
+        void setAll(string name, int enityHealth, int armorHealth, int armorLVL, int weight){}
         
 };
 
@@ -44,15 +45,16 @@ class bodyPart {
 //TORSO
 /*------------------------------------*/
 
-class torso : public bodyPart{
+class Torso : public bodyPart{
 private: 
+    Tool* toolSlots[5];
     vector<Tool> toolSlots;
     vector<UtilMount> utilMounts;
     vector<LegMount> legMounts;
 
 public:
-	torso();
-	torso(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int toolSlots, int utilSlots, int legMounts);
+	Torso();
+	Torso(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int toolSlots, int utilMounts, int legMounts);
 
     int getToolSlotsCount(){}
     vector<Tool>& getToolSlots(){}
@@ -115,7 +117,7 @@ public:
                     double fireRate;
                 public:
                     Weapon();   
-                    Weapon(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int ammoCount, int ammoType);
+                    Weapon(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int ammoCount, Ammo ammoType);
                     
                     double& getAmmoCount(){}
                     Ammo getAmmoType(){}
@@ -169,7 +171,7 @@ public:
 
     int getLegSlotsCount(){}
     vector<Leg>& getLegSlots(){}
-    vector<Leg> setLegSlots(){}
+    vector<Leg> setLegSlots(int index, Leg leg){}
 
 };
 
