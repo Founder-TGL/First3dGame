@@ -114,7 +114,7 @@ void BodyPart::setAll(string name, int enityHealth, int armorHealth, int armorLV
                                 //WEAPON
                                 /*------------------------------------*/
 
-                                Weapon::Weapon() : Util(), ammoCount(100), ammoType(NULL), fireRate(1){}//set ammoType
+                                Weapon::Weapon() : Util(), ammoCount(100), ammoType(Ammo()), fireRate(1){}
                                 Weapon::Weapon(string name, int enityHealth, int armorHealth, int armorLVL , int weight, int ammoCount, Ammo ammoType, double fireRate) : 
                                         Util(name, enityHealth, armorHealth, armorLVL , weight), ammoCount(ammoCount), ammoType(ammoType), fireRate(fireRate){}
                                 int Weapon::getAmmoCount(){return ammoCount;}
@@ -131,7 +131,7 @@ void BodyPart::setAll(string name, int enityHealth, int armorHealth, int armorLV
                                         Ammo::Ammo(string name, int damageLVL, int damage, int weight, double size){setAll(name, damageLVL, damage, weight, size);}
                                         string Ammo::getName(){return name;}
                                         int Ammo::getDamageLVL(){return damageLVL;}
-                                        int Ammo::getDamage(){reutrn damage;}
+                                        int Ammo::getDamage(){return damage;}
                                         int Ammo::getWeight(){return weight;}
                                         double Ammo::getSize(){return size;}
                                         void Ammo::setAll(string name, int damageLVL, int damage, int weight, double size){
@@ -147,9 +147,35 @@ void BodyPart::setAll(string name, int enityHealth, int armorHealth, int armorLV
                                 //SHIELD
                                 /*------------------------------------*/
 
-                                class Shield : public Util{
-                        public:
-                            Shield();   
-                            Shield(string name, int enityHealth, int armorLVL, int armorHealth, int weight);
-                            bool gaurd();
-                        };
+                                Shield::Shield() : Util(){}
+                                Shield::Shield(string name, int enityHealth, int armorLVL, int armorHealth, int weight) :
+                                        Util(name, enityHealth, armorHealth, armorLVL , weight){}
+                                bool Shield::gaurd(){return false;} //TODO: implement gaurding
+
+        /*------------------------------------*/
+        //HIPS
+        /*------------------------------------*/
+
+        LegMount::LegMount() : BodyPart(), legSlotsCount(1){}
+        LegMount::LegMount(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int legSlots) : 
+                BodyPart(name, enityHealth, armorHealth, armorLVL , weight), legSlotsCount(legSlots){}
+        int LegMount::getLegSlotsCount(){return legSlotsCount;}
+        vector<Leg>& LegMount::getLegSlots(){return legSlots;}
+        vector<Leg> LegMount::setLegSlots(int index, Leg leg){
+            if (index < legSlotsCount){
+                legSlots.insert(legSlots.begin() + index, leg);
+            }else{
+                cerr << "Leg added at invalid index (out of bounds)";
+            }                
+        }   
+
+
+                /*------------------------------------*/
+                //LEGS
+                /*------------------------------------*/
+
+                Leg::Leg() : BodyPart(), speed(10){}
+                Leg::Leg(string name, int enityHealth, int armorHealth, int armorLVL , int weight, int speed) : 
+                    BodyPart(name, enityHealth, armorHealth, armorLVL , weight), speed(speed){}
+
+

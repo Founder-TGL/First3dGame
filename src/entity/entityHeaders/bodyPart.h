@@ -141,7 +141,7 @@ public:
 
                                 public:
                                     Ammo();
-                                    Ammo(string name,  int damageLVL, int damage, int ammunition, int weight, double size, double fireRate);
+                                    Ammo(string name,  int damageLVL, int damage, int weight, double size);
 
                                     string getName(){}
                                     int getDamageLVL(){}
@@ -168,7 +168,8 @@ public:
 
 class LegMount : public BodyPart{
 private: 
-    vector<Leg> legs;
+    int legSlotsCount;
+    vector<Leg> legSlots;
 public:
 	LegMount();
 	LegMount(string name, int enityHealth, int armorHealth, int armorLVL , int weight, int legSlots);
@@ -190,7 +191,7 @@ public:
             Leg();
             Leg(string name, int enityHealth, int armorHealth, int armorLVL , int weight, int speed);
 
-            int& getSpeed(){}
+            int getSpeed(){}
         };
 
 #endif
