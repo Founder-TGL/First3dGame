@@ -55,13 +55,14 @@ public:
 	torso(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int toolSlots, int utilSlots, int legMounts);
 
     int getToolSlotsCount(){}
-    vector<Tool> getToolSlots(){}
+    vector<Tool>& getToolSlots(){}
+    void setToolSlots(int index, Tool tool){}
     int getUtilMountsCount(){}
-    vector<UtilMount> getUtilMounts;
+    vector<UtilMount>& getUtilMounts(){}
+    void setUtilMounts(int index, UtilMount utilMount){}
     int getLegsMountsCount(){}
-    vector<LegMount> getLegMounts(){}
-    vector<LegMount>& pullLegMounts(){}
-    vector<LegMount> setLegMounts(int index, LegMount legMount){}
+    vector<LegMount>& getLegMounts(){}
+    void setLegMounts(int index, LegMount legMount){}
     
  
 };
@@ -88,7 +89,8 @@ public:
             UtilMount(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int UtilSlots);
 
             int getUtilSlotsCount(){}
-            vector<Util> getUtilSlots(){}
+            vector<Util>& getUtilSlots(){}
+            void setUtilSlots(int index, Util util){}
 
         };
 
@@ -115,7 +117,7 @@ public:
                     Weapon();   
                     Weapon(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int ammoCount, int ammoType);
                     
-                    double getAmmoCount(){}
+                    double& getAmmoCount(){}
                     Ammo getAmmoType(){}
                     double getFireRate(){}
                 };
@@ -151,6 +153,7 @@ public:
                 public:
                     Shield();   
                     Shield(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int damageLVL, int damage, int ammunition, double fireRate);
+                    bool gaurd();
                 };
 
 /*------------------------------------*/
@@ -159,14 +162,15 @@ public:
 
 class LegMount : public bodyPart{
 private: 
-    int legSlots;
     vector<Leg> legs;
 public:
 	LegMount();
 	LegMount(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int legSlots);
 
     int getLegSlotsCount(){}
-    vector<Leg> getLegSlots(){}
+    vector<Leg>& getLegSlots(){}
+    vector<Leg> setLegSlots(){}
+
 };
 
         /*------------------------------------*/
@@ -180,7 +184,7 @@ public:
             Leg();
             Leg(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int speed);
 
-            int getSpeed(){}
+            int& getSpeed(){}
         };
 
 #endif
