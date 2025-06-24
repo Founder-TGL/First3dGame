@@ -10,7 +10,7 @@ using namespace std;
 //BODYPARTS
 /*------------------------------------*/
 
-class bodyPart {
+class BodyPart {
     private:
         string name;
         int entityHealth;
@@ -20,8 +20,8 @@ class bodyPart {
 
 
     public:
-        bodyPart();
-        bodyPart(string name, int enityHealth, int armorHealth, int armorLVL, int weight);
+        BodyPart();
+        BodyPart(string name, int enityHealth, int armorHealth, int armorLVL, int weight);
 
         bool damage(Ammo ammo) {}
 
@@ -45,9 +45,9 @@ class bodyPart {
 //TORSO
 /*------------------------------------*/
 
-class Torso : public bodyPart{
+class Torso : public BodyPart{
 private: 
-    Tool* toolSlots[5];
+    int toolSlotsCount, utilMountsCount, legMountsCount;
     vector<Tool> toolSlots;
     vector<UtilMount> utilMounts;
     vector<LegMount> legMounts;
@@ -73,22 +73,23 @@ public:
         //TOOLS
         /*------------------------------------*/
 
-        class Tool : public bodyPart{
+        class Tool : public BodyPart{
         public:
             Tool();
-            Tool(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int toolSlots);
+            Tool(string name, int enityHealth, int armorHealth, int armorLVL , int weight);
         };
 
         /*------------------------------------*/
         //MOUNTS
         /*------------------------------------*/
 
-        class UtilMount : public bodyPart{
+        class UtilMount : public BodyPart{
         private: 
-            vector<Util> UtilSlots;
+            int utilSlotsCount;
+            vector<Util> utilSlots;
         public:
             UtilMount();
-            UtilMount(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int UtilSlots);
+            UtilMount(string name, int enityHealth, int armorHealth, int armorLVL , int weight, int UtilSlots);
 
             int getUtilSlotsCount(){}
             vector<Util>& getUtilSlots(){}
@@ -96,65 +97,68 @@ public:
 
         };
 
-        /*------------------------------------*/
-        //UTILS
-        /*------------------------------------*/
-
-        class Util : public bodyPart{
-        public:
-            Util();
-            Util(string name, int enityHealth, int armorLVL, int armorHealth, int weight);
-        };
-
                 /*------------------------------------*/
-                //WEAPON
+                //UTILS
                 /*------------------------------------*/
 
-                class Weapon : public Util{
-                private:
-                    int ammoCount;
-                    Ammo ammoType;
-                    double fireRate;
+                class Util : public BodyPart{
                 public:
-                    Weapon();   
-                    Weapon(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int ammoCount, Ammo ammoType);
-                    
-                    double& getAmmoCount(){}
-                    Ammo getAmmoType(){}
-                    double getFireRate(){}
+                    Util();
+                    Util(string name, int enityHealth, int armorHealth, int armorLVL , int weight);
                 };
-                
+
                         /*------------------------------------*/
-                        //AMMUNITION
+                        //WEAPON
                         /*------------------------------------*/
 
-                        class Ammo{
+                        class Weapon : public Util{
                         private:
-                            string name;
-                            int damageLVL;
-                            int damage;
-                            int weight;
-                            double size;
-
+                            int ammoCount;
+                            Ammo ammoType;
+                            double fireRate;
                         public:
-                            Ammo();
-                            Ammo(string name,  int damageLVL, int damage, int ammunition, int weight, double size, double fireRate);
-
-                            string getName(){}
-                            int getDamageLVL(){}
-                            int getDamage(){}
-                            int getWeight(){}
-                            double getSize(){}
+                            Weapon();   
+                            Weapon(string name, int enityHealth, int armorHealth, int armorLVL , int weight, int ammoCount, Ammo ammoType, double fireRate);
+                            
+                            int getAmmoCount(){}
+                            void setAmmoCount(int ammoCount){}
+                            Ammo getAmmoType(){}
+                            double getFireRate(){}
                         };
+                        
+                                /*------------------------------------*/
+                                //AMMUNITION
+                                /*------------------------------------*/
 
-                /*------------------------------------*/
-                //SHIELD
-                /*------------------------------------*/
+                                class Ammo{
+                                private:
+                                    string name;
+                                    int damageLVL;
+                                    int damage;
+                                    int weight;
+                                    double size;
+                                    
 
-                class Shield : public Util{
+                                public:
+                                    Ammo();
+                                    Ammo(string name,  int damageLVL, int damage, int ammunition, int weight, double size, double fireRate);
+
+                                    string getName(){}
+                                    int getDamageLVL(){}
+                                    int getDamage(){}
+                                    int getWeight(){}
+                                    double getSize(){}
+                                    void setAll(string name, int damageLVL, int damage, int weight, double size);
+                                };
+
+                        /*------------------------------------*/
+                        //SHIELD
+                        /*------------------------------------*/
+
+                        class Shield : public Util{
                 public:
                     Shield();   
-                    Shield(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int damageLVL, int damage, int ammunition, double fireRate);
+                    Shield(string name, int enityHealth, int armorLVL, int armorHealth, int weight);
                     bool gaurd();
                 };
 
@@ -162,12 +166,12 @@ public:
 //HIPS
 /*------------------------------------*/
 
-class LegMount : public bodyPart{
+class LegMount : public BodyPart{
 private: 
     vector<Leg> legs;
 public:
 	LegMount();
-	LegMount(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int legSlots);
+	LegMount(string name, int enityHealth, int armorHealth, int armorLVL , int weight, int legSlots);
 
     int getLegSlotsCount(){}
     vector<Leg>& getLegSlots(){}
@@ -179,12 +183,12 @@ public:
         //LEGS
         /*------------------------------------*/
 
-        class Leg : public bodyPart{
+        class Leg : public BodyPart{
         private: 
             int speed;
         public:
             Leg();
-            Leg(string name, int enityHealth, int armorLVL, int armorHealth, int weight, int speed);
+            Leg(string name, int enityHealth, int armorHealth, int armorLVL , int weight, int speed);
 
             int& getSpeed(){}
         };
