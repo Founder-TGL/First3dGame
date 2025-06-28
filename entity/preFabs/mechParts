@@ -1,0 +1,8 @@
+#include "src/entity/entityHeaders/bodyPart.h"
+
+class MechParts{
+    public: 
+    // BodyPart(string name, int enityHealth, int armorHealth, int armorLVL, int weight);
+        static Torso skrit("skrit-UltraLightWeight-Torso",  40, 30, 2, 400);
+
+};

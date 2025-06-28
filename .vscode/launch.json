@@ -2,6 +2,7 @@
 	"version": "0.2.0",
 	"tasks": [
         {
+            "cwd": "${workspaceFolder}/src",
             "type": "cppbuild",
             "label": "C/C++: g++.exe build active file",
             "command": "C:/path/to/g++.exe",
