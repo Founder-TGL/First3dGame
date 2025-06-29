@@ -14,6 +14,7 @@
                 "-I${workspaceFolder}/src/entity/Definitions",
                 "-I${workspaceFolder}/src/entity/Definitions/gameEntity",
                 "-I${workspaceFolder}/src/entity/types",
+                "-I${workspaceFolder}/src/scene",
                 "${workspaceFolder}/src/main.cpp",
                 "${workspaceFolder}/src/glad.c",
                 "${workspaceFolder}/shaders/shaderClass.cpp",
@@ -27,7 +28,7 @@
                 "${workspaceFolder}/src/entity/camera/Camera.cpp",
                 "${workspaceFolder}/src/entity/types/player/player.cpp",
                 "${workspaceFolder}/src/entity/types/default/entityType.cpp",
-
+                "${workspaceFolder}/src/scene/scene.cpp",
                 
 
                 "-lglfw3dll",
