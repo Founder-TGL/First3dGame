@@ -1,7 +1,7 @@
 #ifndef GAME_OBJECT_H
 #define GAME_OBJECT_H
-#include "Renderable.h"
-#include "Hitbox.h"
+#include "renderable/Renderable.h"
+#include "hitBox/hitBox.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/quaternion.hpp>
 

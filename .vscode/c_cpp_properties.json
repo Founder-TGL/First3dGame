@@ -1,18 +1,26 @@
 {
-  "configurations": [
-    {
-      "name": "windows-gcc-x64",
-      "includePath": [
-        "${workspaceFolder}/**"
-      ],
-      "compilerPath": "C:/msys64/ucrt64/bin/gcc.exe",
-      "cStandard": "${default}",
-      "cppStandard": "${default}",
-      "intelliSenseMode": "windows-gcc-x64",
-      "compilerArgs": [
-        ""
-      ]
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "name": "windows-gcc-x64",
+            "includePath": [
+                    "${workspaceFolder}/src",
+                    "${workspaceFolder}/src/entity/Definitions",
+                    "${workspaceFolder}/src/entity/Definitions/gameEntity",
+                    "${workspaceFolder}/src/entity/Definitions/gameEntity/renderable",
+                    "${workspaceFolder}/src/entity/types",
+                    "${workspaceFolder}/src/entity/types/player",
+                    "${workspaceFolder}/src/entity/camera",
+                    "${workspaceFolder}/include",
+                    "${workspaceFolder}/shaders"
+            ],
+            "compilerPath": "C:/msys64/ucrt64/bin/gcc.exe",
+            "cStandard": "${default}",
+            "cppStandard": "${default}",
+            "intelliSenseMode": "windows-gcc-x64",
+            "compilerArgs": [
+                ""
+            ]
+        }
+    ],
+    "version": 4
 }

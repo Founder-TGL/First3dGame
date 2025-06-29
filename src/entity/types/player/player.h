@@ -2,8 +2,8 @@
 #define PLAYER_H
 
 #include "Camera.h"
-#include "Renderable.h"
-#include "gameObject.h"
+#include "renderable/Renderable.h"
+#include "gameEntity.h"
 
 class Player
 {

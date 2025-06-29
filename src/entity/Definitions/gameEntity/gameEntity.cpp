@@ -1,6 +1,6 @@
 #define GLM_ENABLE_EXPERIMENTAL
 
-#include "GameObject.h"
+#include "gameEntity.h"
 #include <glm/gtc/matrix_transform.hpp>
 
 GameObject::GameObject(Renderable m)

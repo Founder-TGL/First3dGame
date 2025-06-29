@@ -1,6 +1,6 @@
-#include "player.h"
+#include "player/player.h"
 #include "Camera.h"
-#include "Renderable.h"
+#include "renderable/Renderable.h"
 #include <glm/glm.hpp>
 #include <glm/gtx/string_cast.hpp>
 #include <glm/gtx/rotate_vector.hpp>
