@@ -26,8 +26,9 @@
                 "${workspaceFolder}/src/entity/Definitions/gameEntity/gameEntity.cpp",
                 "${workspaceFolder}/src/entity/camera/Camera.cpp",
                 "${workspaceFolder}/src/entity/types/player/player.cpp",
-                // "${workspaceFolder}/src/scene/sceneDef/Scene.cpp",
+                "${workspaceFolder}/src/entity/types/default/entityType.cpp",
 
+                
 
                 "-lglfw3dll",
                 "-o",

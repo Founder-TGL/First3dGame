@@ -13,7 +13,7 @@ class Player
         float speed;
         float followDist   = 5.0f;
         float followHeight = 2.0f; 
-        GameObject playerObj;
+        gameEntity playerObj;
         Camera playerCamera;
         bool firstClick = true;
         bool mouseLocked = false;

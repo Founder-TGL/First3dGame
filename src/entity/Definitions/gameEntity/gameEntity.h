@@ -5,10 +5,10 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/quaternion.hpp>
 
-class GameObject {
+class gameEntity {
 public:
   // ctor: takes ownership of a mesh
-  GameObject(Renderable mesh);
+  gameEntity(Renderable mesh);
 
   // set transform
   void setPosition(const glm::vec3& p)   { position = p; }
@@ -34,7 +34,7 @@ public:
 
   void computeLocalBounds();   // read mesh verts → localHalfExtents
 
-  bool wouldCollide(const glm::vec3& newPos, const GameObject& other);
+  bool wouldCollide(const glm::vec3& newPos, const gameEntity& other);
 };
 
 #endif
