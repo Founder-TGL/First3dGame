@@ -16,6 +16,8 @@ class EntityType
         EntityType(Renderable entMesh, int health = 10, glm::vec3 position = {1.0f, 1.0f, 1.0f});
 
         bool isDead() const { return health <= 0;}
+        
+        virtual void update(float deltaTime);
 };
 
 #endif

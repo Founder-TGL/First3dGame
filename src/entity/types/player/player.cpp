@@ -6,19 +6,16 @@
 #include <glm/gtx/rotate_vector.hpp>
 #include <glm/gtx/vector_angle.hpp>
 
-Player::Player(int width, int height, Renderable playerMesh, float speed, int health, glm::vec3 position, float damageCooldown )
-    : width(width), height(height), speed(speed), health(health), startingHealth(health), damageCooldownTime(damageCooldown), startPos(position) ,playerObj(std::move(playerMesh)), playerCamera(width, height, position + glm::vec3(0.0f, followHeight, followDist))
-{
-    playerObj.position = position;
-    playerObj.orientation = glm::vec3(0.0f, 0.0f, 1.0f);
+Player::Player(GLFWwindow* window, int width, int height, Renderable playerMesh,
+               float speed, int health, glm::vec3 position, float damageCooldown)
+    : EntityType(playerMesh, health, position), 
+      window(window), width(width), height(height),
+      speed(speed), health(health), startingHealth(health),
+      damageCooldownTime(damageCooldown), startPos(position),
+      playerObj(std::move(playerMesh)),
+      playerCamera(width, height, position + glm::vec3(0.0f, followHeight, followDist)) { }
 
-    playerObj.update();
-    glm::vec3 viewDir = playerObj.position - playerCamera.position;
-    playerCamera.orientation = glm::normalize(glm::vec3(viewDir.x, viewDir.y, 0.0f));
-    moveCamera();
-}
-
-glm::vec3 Player::Input(float deltaTime, GLFWwindow* window) {
+glm::vec3 Player::Input(float deltaTime) {
     // Mouse look
     if (mouseLocked) {
         double mouseX, mouseY;
@@ -93,4 +90,11 @@ void Player::moveCamera() {
     // 4) write into your Camera
     playerCamera.position    = camPos;
     playerCamera.orientation = lookDir;
+}
+
+void Player::update(float deltaTime)
+{
+    Input(deltaTime);
+    playerObj.update();
+    moveCamera();
 }

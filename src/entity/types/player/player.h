@@ -4,8 +4,9 @@
 #include "Camera.h"
 #include "renderable/Renderable.h"
 #include "gameEntity.h"
+#include "default/entityType.h"
 
-class Player
+class Player : public EntityType
 {
     public:
         int width;
@@ -13,6 +14,7 @@ class Player
         float speed;
         float followDist   = 5.0f;
         float followHeight = 2.0f; 
+        GLFWwindow* window;
         gameEntity playerObj;
         Camera playerCamera;
         bool firstClick = true;
@@ -24,13 +26,12 @@ class Player
         int startingHealth;
         float yaw = 0.0f;
 
-        Player(int width, int height, Renderable playerMesh, float speed = 0.1f, int health = 10, glm::vec3 position = {1.0f, 1.0f, 1.0f}, float damageCooldown = 0.5f);
+        Player(GLFWwindow* window, int width, int height, Renderable playerMesh, float speed = 0.1f, int health = 10, glm::vec3 position = {1.0f, 1.0f, 1.0f}, float damageCooldown = 0.5f);
 
-        glm::vec3 Input(float deltaTime, GLFWwindow* window);
+        glm::vec3 Input(float deltaTime);
         void moveCamera();
-        bool isDead() const { return health <= 0; std::cout << "player health " << health << std::endl;
-}
-
+        bool isDead() const { return health <= 0; std::cout << "player health " << health << std::endl;}
+        void update(float deltaTime) override;
 };
 
 #endif
