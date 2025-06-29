@@ -18,6 +18,9 @@ class EntityType
         bool isDead() const { return health <= 0;}
         
         virtual void update(float deltaTime);
+
+        virtual void Draw(Shader& shader);
+
 };
 
 #endif

@@ -19,11 +19,8 @@ class Player : public EntityType
         Camera playerCamera;
         bool firstClick = true;
         bool mouseLocked = false;
-        int health;
         float damageCooldown;
         float damageCooldownTime;
-        glm::vec3 startPos = glm::vec3(0.0f, 0.0f, 0.0f);
-        int startingHealth;
         float yaw = 0.0f;
 
         Player(GLFWwindow* window, int width, int height, Renderable playerMesh, float speed = 0.1f, int health = 10, glm::vec3 position = {1.0f, 1.0f, 1.0f}, float damageCooldown = 0.5f);
@@ -32,6 +29,7 @@ class Player : public EntityType
         void moveCamera();
         bool isDead() const { return health <= 0; std::cout << "player health " << health << std::endl;}
         void update(float deltaTime) override;
+        void Draw(Shader& shader) override;
 };
 
 #endif

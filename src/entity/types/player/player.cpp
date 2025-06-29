@@ -10,8 +10,7 @@ Player::Player(GLFWwindow* window, int width, int height, Renderable playerMesh,
                float speed, int health, glm::vec3 position, float damageCooldown)
     : EntityType(playerMesh, health, position), 
       window(window), width(width), height(height),
-      speed(speed), health(health), startingHealth(health),
-      damageCooldownTime(damageCooldown), startPos(position),
+      speed(speed), damageCooldownTime(damageCooldown), 
       playerObj(std::move(playerMesh)),
       playerCamera(width, height, position + glm::vec3(0.0f, followHeight, followDist)) { }
 
@@ -98,3 +97,5 @@ void Player::update(float deltaTime)
     playerObj.update();
     moveCamera();
 }
+
+void Player::Draw(Shader& shader){playerObj.Draw(shader);}
